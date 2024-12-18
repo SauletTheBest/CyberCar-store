@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
-	//"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -37,33 +37,31 @@ func main() {
 
 	// Операции CRUD
 
-	newUser := User{Name: "John Doe", Email: "john@example.com"}
-	insertResult, err := collection.InsertOne(context.TODO(), newUser)
-	if err != nil {
-		log.Fatal("Ошибка добавления:", err)
-	}
-	fmt.Println("Пользователь добавлен с ID:", insertResult.InsertedID)
-
-	// var result User
-	// err = collection.FindOne(context.TODO(), bson.M{"name": "John Doe"}).Decode(&result)
+	// newUser := User{Name: "Saulet Kabdrakhmanov", Email: "saulet@example.com"}
+	// insertResult, err := collection.InsertOne(context.TODO(), newUser)
 	// if err != nil {
-	// 	log.Fatal("Ошибка чтения:", err)
+	// 	log.Fatal("Ошибка добавления:", err)
 	// }
-	// fmt.Printf("Найден пользователь: %+v\n", result)
+	// fmt.Println("Пользователь добавлен с ID:", insertResult.InsertedID)
 
-	// filter := bson.M{"name": "John Doe"}
-	// update := bson.M{"$set": bson.M{"email": "john.doe@example.com"}}
+	var result User
+	err = collection.FindOne(context.TODO(), bson.M{"name":"Saulet Kabdrakhmanov"}).Decode(&result)
+	if err != nil {
+		log.Fatal("Ошибка чтения:", err)
+	}
+	fmt.Printf("Найден пользователь: %+v\n", result)
+
+	// filter := bson.M{"name": "Saulet Kabdrakhmanov"}
+	// update := bson.M{"$set": bson.M{"email": "sauletbest@gmail.com"}}
 	// _, err = collection.UpdateOne(context.TODO(), filter, update)
 	// if err != nil {
 	// 	log.Fatal("Ошибка обновления:", err)
 	// }
 	// fmt.Println("Пользователь успешно обновлён!")
 
-	// _, err = collection.DeleteOne(context.TODO(), bson.M{"name": "John Doe"})
+	// _, err = collection.DeleteOne(context.TODO(), bson.M{"name": "Saulet Kabdrakhmanov"})
 	// if err != nil {
 	// 	log.Fatal("Ошибка удаления:", err)
 	// }
 	// fmt.Println("Пользователь успешно удалён!")
 }
-
-
