@@ -18,7 +18,7 @@ The project uses **MongoDB** as the database, and interaction is possible throug
 ---
 
 ## Screenshot of the Main Page
-![Main Page]()
+![Main Page](main.page.png)
 
 ---
 
