@@ -1,8 +1,8 @@
 
 ---
-# CyberCar Store
+# CyberCar Store 🚙
 
-## Project Description
+## Project Description ✒️
 CyberCar Store is a web application designed for selling cybercars to users.  
 The application provides functionality for managing users through CRUD operations (Create, Read, Update, Delete).  
 
@@ -10,7 +10,7 @@ The project uses **MongoDB** as the database, and interaction is possible throug
 
 ---
 
-## Team Members
+## Team Members 🧑
 - Saulet Kabdrakhmanov SE - 2307
 - Agybetov Nurbol SE - 2307
 
@@ -22,7 +22,7 @@ The project uses **MongoDB** as the database, and interaction is possible throug
 
 ---
 
-## Project Goals
+## Project Goals 🎯
 - Selling modern cybercars to users.
 - Managing user data to ensure a personalized approach.
 - Creating an intuitive interface for working with user data.
@@ -53,7 +53,7 @@ The project uses **MongoDB** as the database, and interaction is possible throug
 1. Clone the repository:
    ```bash
    git clone https://github.com/SauletTheBest/CyberCar-store/issues
-   cd cybercar-store
+   cd CyberCar-store
    ```
 
 2. Configure MongoDB:
@@ -76,8 +76,7 @@ The project uses **MongoDB** as the database, and interaction is possible throug
    ```
 
 6. For API testing:
-   - Import the Postman collection (`postman_collection.json`) from the root directory of the project.
-   - Use it to test the API endpoints.
+   - Usage of Postman (CRUD operations)
 
 ---
 
@@ -101,10 +100,10 @@ The project uses **MongoDB** as the database, and interaction is possible throug
 - **Development Environment:**
   - Visual Studio Code
   - GitHub
+  - Goland
 - **Resources:**
   - [MongoDB Documentation](https://www.mongodb.com/docs/)
   - [Go Documentation](https://go.dev/doc/)
-
 ---
 
 ## Feedback
