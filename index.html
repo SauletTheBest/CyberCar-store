@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <script>
+        async function loadUsers() {
+            const response = await fetch("/users");
+            const users = await response.json();
+            const table = document.getElementById("user-table");
+            table.innerHTML = users.map(user =>
+                `<tr><td>${user.id}</td><td>${user.name}</td><td>${user.age}</td></tr>`
+            ).join("");
+        }
+
+        async function sendData(url, method, data) {
+            await fetch(url, {
+                method: method,
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            });
+            loadUsers();
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadUsers();
+
+            document.getElementById("create-form").onsubmit = e => {
+                e.preventDefault();
+                sendData("/users/create", "POST", {
+                    id: e.target.id.value,
+                    name: e.target.name.value,
+                    age: e.target.age.value,
+                });
+            };
+
+            document.getElementById("update-form").onsubmit = e => {
+                e.preventDefault();
+                sendData("/users/update", "PUT", {
+                    id: e.target.id.value,
+                    name: e.target.name.value,
+                    age: e.target.age.value,
+                });
+            };
+
+            document.getElementById("delete-form").onsubmit = e => {
+                e.preventDefault();
+                sendData("/users/delete", "DELETE", { id: e.target.id.value });
+            };
+        });
+    </script>
+</head>
+<body>
+<h1>User Management</h1>
+
+<h2>Create User</h2>
+<form id="create-form">
+    <input type="text" name="id" placeholder="ID" required />
+    <input type="text" name="name" placeholder="Name" required />
+    <input type="text" name="age" placeholder="Age" required />
+    <button>Create</button>
+</form>
+
+<h2>Update User</h2>
+<form id="update-form">
+    <input type="text" name="id" placeholder="ID" required />
+    <input type="text" name="name" placeholder="New Name" />
+    <input type="text" name="age" placeholder="New Age" />
+    <button>Update</button>
+</form>
+
+<h2>Delete User</h2>
+<form id="delete-form">
+    <input type="text" name="id" placeholder="ID" required />
+    <button>Delete</button>
+</form>
+
+<h2>User List</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+    </tr>
+    </thead>
+    <tbody id="user-table"></tbody>
+</table>
+</body>
+</html>
